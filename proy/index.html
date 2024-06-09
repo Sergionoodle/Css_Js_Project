@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/flip-clock.css" />
+    <script src="js/flip-clock.js"></script>
+    <style>
+        /*Estilos de css para el contenido, mas keyframe de animacion en dos titulos*/
+        .gliched {
+            animation: 10s infinite alternate slidein;
+            text-shadow: 2px 2px 3px #000000;
+        }
+
+        @keyframes slidein {
+            from {
+                margin-left: 100%;
+                width: 300%
+            }
+
+            to {
+                margin-left: 0%;
+                width: 100%;
+            }
+        }
+
+        .nav {
+            background-color: #333333;
+        }
+
+        .card {
+            margin: 1px auto;
+            border: 0.5px solid black;
+            background-color: #baa6f74f;
+        }
+
+        .card-img-top {
+            margin: 3px auto;
+            width: 10rem;
+            height: 125px;
+        }
+
+        .margen {
+            margin: 0 1rem;
+        }
+
+        .plug {
+            margin-top: 5rem;
+        }
+
+        table,
+        tr,
+        th,
+        td {
+            border: 2px solid black;
+            margin: 1px;
+        }
+        #coches{
+            margin-top: 100px;
+        }
+    </style>
+
+
+</head>
+<script>
+    //Invertir el color, comprueba que el boton tenga el texto de Modo Batman y le cambia el nombre y lo oscurece todo
+    $(document).ready(function () {
+        $(".btnColor").click(function () {
+            if ($(this).text() == "Modo Batman") {
+                $(this).text("LightMode")
+                $("body").css("background-color", "#333333")
+                $(".gliched").css("color", "white")
+                $(".nav").css("background-color", "black")
+                $(".card").css("background-color", "#525252")
+                $(".card-title").css("color", "white")
+                $(".card-text").css("color", "white")
+                $(".h2").css("color", "white")
+                $(".info").css("color", "white")
+                $("form").css("color", "white")
+                $("h2").css("color", "white")
+                $("table").css("color","white")
+
+//Cuando esta cambiado le pone el color de nuevo si pulsas el Light mode
+            } else {
+                $(this).text("Modo Batman")
+                $("body").css("background-color", "white")
+                $(".gliched").css("color", "black")
+                $(".nav").css("background-color", "#333333")
+                $(".card").css("background-color", "#baa6f74f")
+                $(".card-title").css("color", "black")
+                $(".card-text").css("color", "black")
+                $(".h2").css("color", "black")
+                $(".info").css("color", "black")
+                $("form").css("color", "black")
+                $("h2").css("color", "black")
+                $("table").css("color","black")
+
+            }
+        });
+    })
+
+//JQuery para animar el boton de ocultar los 4 coches seleccionados
+    $(document).ready(function () {
+        $(".boton").click(function () {
+            if ($(".boton").text() == "Ocultar") {
+                $(this).text("Mostrar fichas")
+
+                $(".card").animate({
+                    height: 'toggle'
+                });
+            } else {
+
+                $(this).text("Ocultar")
+                $(".card").animate({
+                    height: 'toggle'
+                });
+            }
+        });
+    });
+
+//JQuery para hacer que el coche que hay en chiquitito se mueva pulsando un boton
+    $(document).ready(function () {
+        $(".mueve").click(function () {
+            if ($(this).text() == "Mueve el coche") {
+                $(this).text("Marcha atras")
+                $(".coche").animate({
+                    left: '700px'
+                });
+//Hacemos que cuando le cambie el nombre vaya hacia atras
+            } else {
+                $(this).text("Mueve el coche")
+                $(".coche").animate({
+                    left: '0px'
+                });
+            }
+        });
+    });
+
+//JQuery del plugin implementado con el temporizador
+    $('.flip-demo').on('done', function () {
+        console.log('doooooonnnnnee!');
+    });
+
+    $('.flip-demo').on('before<a href="https://www.jqueryscript.net/tags.php?/Flip/">Flip</a>ping', function (e, data) {
+        console.log('beforeFlipping:', data);
+    });
+
+    $('.flip-demo').on('afterFlipping', function (e, data) {
+        console.log('afterFlipping:', data);
+    });
+
+//JQuery para añadir comentarios
+    $(document).ready(function () {
+        $("#insertButton").click(function () {
+            let usr = $("#usuario").val()
+            let coch = $("#coche").val()
+            let op = $("#opinion").val()
+
+            let nuevo = "<tr><td>" + usr + "</td><td>" + coch + "</td><td>" + op + "</td>";
+            let insert = $('#tabla').append(nuevo)
+        })
+    })
+
+//Cuando le das a cancelar te borra el valor de los imputs
+    $(document).ready(function () {
+        $("#cancelButton").click(function () {
+            $("#usuario").val("")
+            $("#coche").val("")
+            $("#opinion").val("")
+        })
+    })
+</script>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
+
+    <!--NAVAR-->
+    <nav id="navbar-example2" class="nav sticky-top navbar navbar-expand-sm navbar-dark px-3">
+        <a class="navbar-brand" href="#"><img src="img/toyota.png" alt="" width="70" height="40"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link"
+                        href="https://www.toyota.es/?gclid=CjwKCAiAgbiQBhAHEiwAuQ6BkgDRtI_sS418lmj7km_58LzPHzQnKrqRxljroDz44y3VfNCFowe78BoC0dsQAvD_BwE&gclsrc=aw.ds">TOYOTA</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#section3">Info</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#section2">Super animacion</a>
+                </li>
+                <li class="nav-item me-5">
+                    <a class="nav-link" href="#section5">Comentarios</a>
+                </li>
+                <!--Boton para el modo nocturno-->
+                <button class="btnColor md-5 " id="btnColor">Modo Batman</button>
+
+            </ul>
+        </div>
+    </nav>
+
+<!--Titulo que se movera mas su imagen-->
+    <h1 class="gliched"><b>BEST TOYOTA CARS</b><img
+            src="img/kisspng-t-shirt-toyota-ae86-toyota-sprinter-toyota-corolla-5ae46fee2928f4.8381335715249203021686.png"
+            width="300" height="230" alt=""></h1>
+
+<!--Cartas generadas con bootstrap y un boton para ocultar y desplegar-->
+    <div class="margen">
+        <button id="section3" class="boton">Ocultar</button>
+
+        <div class="dek card-deck flex-wrap d-flex align-content-centre">
+            <div class="card col-3">
+                <img class="card-img-top" src="img/mr2.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Toyota Mr2 mk2</h5>
+                    <p class="card-text">El maravilloso deportivo con motor central de toyota, en una de sus
+                        generaciones más cotizadas compartiendo chasis con el Toyota Corolla AE86, este deportivo cuenta
+                        con tracción trasera y uno de los mejores motores creados por la industria
+                        automovilística en los 80s.</p>
+                </div>
+
+            </div>
+            <div class="card col-3">
+                <img class="card-img-top" src="img/gt86.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Toyota Gt86</h5>
+                    <p class="card-text">El sucesor del toyota trueno AE86, uno de los mejores deportivos calidad precio
+                        que hay en el mercado ahora mismo, con su tracción trasera y sus 200cv no deja nada a desear.
+                    </p>
+                </div>
+
+            </div>
+            <div class="card col-3">
+                <img class="card-img-top" src="img/celica.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Toyota Celica</h5>
+                    <p class="card-text">Uno de los deportivos más vistos en los 2000, el toyota celica cuenta con un
+                        motor creado de la mano de lotus haciéndolo así uno de los mejores, ya en su séptima generación
+                        no dice que sus principios en el rally sean malos.</p>
+                </div>
+
+            </div>
+            <div class="card col-3">
+                <img class="card-img-top" src="img/ae86.JPG" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Toyota AE86</h5>
+                    <p class="card-text">Toyota Corolla AE86, un coche de los 80 con tracción trasera y que en este
+                        momento está muy cotizado, el toyota cuenta con uno de los mejores motores creados por toyota.
+                        También es de mencionar su aparición en una serie de animación
+                        japonesa y su buena fama.</p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!--Texto-->
+
+        <h2 class="h2">Un poco de info</h2>
+        <p class="info">Toyota Motor Corporation (en japonés: トヨタ自動車株式会社, Toyota Kaisha?)3​ mejor conocida como Toyota,
+            es una empresa japonesa de fabricación de automóviles. Fundada en 1933 por Kiichiro Toyoda, su sede
+            principal está ubicada en Toyota (Aichi) y Bunkyō
+            (Tokio) aunque, por su carácter multinacional, cuenta con fábricas y sedes en varios países.4​ En 2019,
+            Toyota fue el segundo mayor fabricante mundial de automóviles (por producción), por detrás del Grupo
+            Volkswagen.5​ y tuvo ventas mundiales
+            de 10,74 millones de vehículos.1​ Además, según el ranking elaborado por Interbrand, Toyota fue la quinta
+            marca más valiosa del mundo en 2016,6​ siendo considerada en 2017 como la marca de vehículos más valiosa con
+            un valor de marca de US$28
+            700 millones.7​ En el mismo sentido, el Informe Global sobre la Automoción 2018 realizado por la consultora
+            KPMG afirmó que el grupo Toyota fue la marca de automoción mejor posicionada para un futuro inmediato a
+            cinco años por delante de BMW
+            y Tesla</p>
+
+        <br>
+        <br id="section2">
+        <!--Le damos un audio para que cuando pulse un boton se reproduzca-->
+        <audio id="player" src="derrape.mp3"></audio>
+        <button onclick="document.getElementById('player').play()" class="mueve">Mueve el coche</button>
+        <br>
+        <div class="coche" style="position: absolute;"><img
+                src="img/kisspng-t-shirt-toyota-ae86-toyota-sprinter-toyota-corolla-5ae46fee2928f4.8381335715249203021686.png"
+                width="150" alt=""></div>
+        <br>
+
+        <!--Cuenta atras del plugin-->
+
+        <div class="plug">
+            <h1 class="gliched">Tiempo para que explosione la pagina</h1>
+            <ul class="flip-clock-container flip-example">
+                <li class="flip-item-seconds">00</li>
+                <li class="flip-item-minutes">23</li>
+                <li class="flip-item-hours">2</li>
+                <li class="flip-item-days">01</li>
+            </ul>
+        </div>
+        <!--
+        Insertar opiniones 
+        -->      
+        <div id="coches">
+
+            <h2>Opiniones</h2>
+
+            <div id="editar">
+                <form>
+                    <input type="hidden" name="row" id="row" value=""> Usuario:
+                    <br><input type="text" id="usuario" required><br> Coche:
+                    <br><input type="text" id="coche" required><br> Opinion:
+                    <br><input type="text" id="opinion" required><br>
+                </form>
+
+                <div id="botonesEdit">
+                    <button id="insertButton">Insert</button>
+                    <button id="cancelButton">Cancel</button>
+                </div>
+            </div>
+            <br>
+            <div  id="section5">
+                <table id="tabla">
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Coche</th>
+                        <th>Opinion</th>
+                    </tr>
+                    <tr>
+                        <td>PepeJuan</td>
+                        <td>Toyota Corolla</td>
+                        <td>Me encanta el coche 0 pegas</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+</html>
